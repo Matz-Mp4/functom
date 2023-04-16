@@ -1,5 +1,5 @@
-pub mod error;
-pub mod parser;
-pub mod token;
+mod error;
+mod parser;
+mod token;
 pub mod evaluate;
 

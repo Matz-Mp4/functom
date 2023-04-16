@@ -28,7 +28,7 @@ pub fn valid_infix(tokens: &VecDeque<Token>) -> Result<&VecDeque<Token>, ParseEr
 
     for token in iter {
         match *token {
-            Token::Num(_) | Token::Var('x') | Token::Const(_)=> {
+            Token::Num(_) | Token::Var('x') | Token::Const(_) => {
                 if let Some(t) = last {
                     match *t {
                         Token::Num(_) | Token::Var('x') | Token::Bracket(')') => {
@@ -60,7 +60,6 @@ pub fn valid_infix(tokens: &VecDeque<Token>) -> Result<&VecDeque<Token>, ParseEr
                     }
                 }
             }
-
             Token::BinOp(_) => {
                 if let Some(t) = last {
                     match *t {
@@ -93,7 +92,7 @@ pub fn infix_to_posfix(tokens: VecDeque<Token>) -> Result<VecDeque<Token>, Parse
     for token in tokens {
         match token {
             Token::Num(_) | Token::Var('x') => posfix.push_back(token),
-            
+
             Token::Const(_) => posfix.push_back(token),
 
             Token::Bracket('(') => {

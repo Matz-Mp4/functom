@@ -132,7 +132,10 @@ impl Token {
                     tokens.push_back(Token::BinOp('^'));
                 }
                 '\n' => {}
-                _ => return Err(ParseError::UnknownSymbol),
+
+                _ => {
+                    return Err(ParseError::UnknownSymbol);
+                }
             }
         }
 

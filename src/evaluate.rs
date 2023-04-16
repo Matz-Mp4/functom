@@ -1,4 +1,4 @@
-use crate::{error::*,  parser, token::Token};
+use crate::{error::*, parser, token::Token};
 use std::{collections::VecDeque, f64::consts};
 
 pub fn evaluate_at(value: f64, function: String) -> Result<f64, ParseError> {
@@ -13,7 +13,6 @@ pub fn evaluate_on_range(
     function: String,
     inc: f64,
 ) -> Result<Vec<f64>, ParseError> {
-
     let mut func_values: Vec<f64> = Vec::new();
     let tokens = Token::tokenizer(function)?;
     let posfix = parser::infix_to_posfix(tokens)?;
@@ -21,7 +20,7 @@ pub fn evaluate_on_range(
 
     while temp <= end {
         func_values.push(calculate_at(temp, posfix.clone())?);
-        temp +=  inc;
+        temp += inc;
     }
 
     Ok(func_values)
@@ -80,7 +79,7 @@ pub fn calculate_at(value: f64, toks: VecDeque<Token>) -> Result<f64, ParseError
             _ => {}
         }
     }
-
+    /*
     let len = stack.len();
     if len == 0 {
         Err(ParseError::BadExpression)
@@ -88,5 +87,7 @@ pub fn calculate_at(value: f64, toks: VecDeque<Token>) -> Result<f64, ParseError
         Ok(stack.pop().unwrap())
     } else {
         Err(ParseError::BadExpression)
-    }
+    }*/
+
+    Ok(stack.pop().unwrap())
 }
