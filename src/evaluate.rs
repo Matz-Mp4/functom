@@ -1,4 +1,4 @@
-use crate::{error::*, parser, token::Token};
+use crate::{error::*,  parser, token::Token};
 use std::{collections::VecDeque, f64::consts};
 
 pub fn evaluate_at(value: f64, function: String) -> Result<f64, ParseError> {
@@ -7,8 +7,28 @@ pub fn evaluate_at(value: f64, function: String) -> Result<f64, ParseError> {
     calculate_at(value, posfix)
 }
 
+pub fn evaluate_on_range(
+    begin: f64,
+    end: f64,
+    function: String,
+    inc: f64,
+) -> Result<Vec<f64>, ParseError> {
+
+    let mut func_values: Vec<f64> = Vec::new();
+    let tokens = Token::tokenizer(function)?;
+    let posfix = parser::infix_to_posfix(tokens)?;
+    let mut temp = begin;
+
+    while temp <= end {
+        func_values.push(calculate_at(temp, posfix.clone())?);
+        temp +=  inc;
+    }
+
+    Ok(func_values)
+}
+
 /// Calculate a tokenized RPN-notated Expression
-fn calculate_at(value: f64, toks: VecDeque<Token>) -> Result<f64, ParseError> {
+pub fn calculate_at(value: f64, toks: VecDeque<Token>) -> Result<f64, ParseError> {
     let mut stack: Vec<f64> = Vec::new();
 
     for tok in toks {

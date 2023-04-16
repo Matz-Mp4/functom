@@ -1,4 +1,3 @@
-use colored::Colorize;
 use std::fmt;
 
 #[derive(Debug, PartialEq, Clone, Copy)]
