@@ -1,6 +1,6 @@
 use std::collections::VecDeque;
 
-use crate::{error::ParseError, token::Token};
+use crate::evaluater::{error::ParseError, token::Token};
 
 fn precedency(tok: &Token) -> u8 {
     match tok {

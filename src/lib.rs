@@ -1,5 +1,3 @@
-pub mod error;
-mod parser;
-mod token;
-pub mod evaluate;
+pub mod evaluater;
+pub mod plotter;
 

@@ -1,4 +1,4 @@
-use crate::{error::*, parser, token::Token};
+use crate::evaluater::{error::*, parser, token::Token};
 use std::{collections::VecDeque, f64::consts};
 
 pub fn evaluate_at(value: f64, function: String) -> Result<f64, ParseError> {

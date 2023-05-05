@@ -1,7 +1,6 @@
-use functom::evaluate::evaluate_at;
-use functom::error::ParseError;
-//TODO Comment Functions 
+//TODO Comment Functions
+use functom::plotter::graphics::*;
 fn main() {
-
-    assert_eq!(evaluate_at(0.0, "5+%+4".to_string()), Err(ParseError::UnknownSymbol));
+    let wind = Window::new(80, 50);
+    wind.render();
 }

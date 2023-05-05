@@ -1,6 +1,6 @@
+use crate::evaluater::error::ParseError;
 use std::collections::VecDeque;
 
-use crate::error::ParseError;
 
 #[derive(Debug, PartialEq, Clone)]
 pub enum Token {
