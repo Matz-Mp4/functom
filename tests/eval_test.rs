@@ -1,6 +1,8 @@
 #[cfg(test)]
 mod tests {
-    use functom::{error::ParseError, evaluate::evaluate_at};
+
+    use functom::evaluater::error::ParseError;
+    use functom::evaluater::evaluate::evaluate_at;
 
     #[test]
     fn test_01() {
